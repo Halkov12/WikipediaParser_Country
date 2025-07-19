@@ -16,7 +16,7 @@ cd WikipediaParser_Country
 2. Run get_data (parsing and saving):
 
 ```bash
-docker-compose up --build get_data
+docker-compose up get_data
 ```
 
 3. Display aggregated data by region:
