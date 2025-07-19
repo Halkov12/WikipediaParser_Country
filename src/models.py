@@ -1,5 +1,7 @@
 from sqlalchemy import Column, Integer, String, BigInteger
-from db import Base
+from db import db_manager
+
+Base = db_manager.Base
 
 class Country(Base):
     __tablename__ = "countries"

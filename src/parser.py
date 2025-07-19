@@ -77,7 +77,9 @@ class StatisticstimesParser:
             countries.append(CountryData(name, region, population))
         return countries
 
-def get_parser():
-    if DATA_SOURCE == "statisticstimes":
-        return StatisticstimesParser()
-    return WikipediaParser() 
+class ParserFactory:
+    @staticmethod
+    def get_parser():
+        if DATA_SOURCE == "statisticstimes":
+            return StatisticstimesParser()
+        return WikipediaParser() 
