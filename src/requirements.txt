@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+aiohttp
+selectolax
+SQLAlchemy[asyncio]
+asyncpg
+python-dotenv 
