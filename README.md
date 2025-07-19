@@ -9,7 +9,7 @@ The service asynchronously parses country population data from Wikipedia or Stat
 1. Clone the repository:
 
 ```bash
-git clone <your_repo_url>
+git clone https://github.com/Halkov12/WikipediaParser_Country.git
 cd WikipediaParser_Country
 ```
 
