@@ -1,50 +1,41 @@
-# WikipediaParser_Country
+# Parser_Country
 
-## Опис
+## Description
 
-Сервіс асинхронно парсить дані по населенню країн з Wikipedia або Statisticstimes, зберігає у Postgres і виводить агреговану статистику по регіонах.
+The service asynchronously parses country population data from Wikipedia or Statisticstimes, stores it in Postgres, and outputs aggregated statistics by region.
 
-## Запуск
+## Launch
 
-1. Клонувати репозиторій:
+1. Clone the repository:
 
 ```bash
-git clone <your_repo_url>
+git clone https://github.com/Halkov12/WikipediaParser_Country.git
 cd WikipediaParser_Country
 ```
 
-2. Запустити Postgres та get_data (парсинг і збереження):
+2. Run get_data (parsing and saving):
 
 ```bash
-docker-compose up --build get_data
+docker-compose up get_data
 ```
 
-3. Вивести агреговані дані по регіонах:
+3. Display aggregated data by region:
 
 ```bash
 docker-compose up print_data
 ```
 
-## Змінні оточення
+## Environment
 
-- `DATA_SOURCE` — джерело даних (`wikipedia` або `statisticstimes`)
-- `DATABASE_URL` — підключення до Postgres (налаштовано у docker-compose.yml)
+- `DATA_SOURCE` — (`wikipedia` or `statisticstimes`)
+- `DATABASE_URL` — Postgres connection
 
-### Щоб парсити з Statisticstimes:
 
-Відредагуйте `docker-compose.yml`:
+## Structure
+- All code in the `src/` folder
+- Data stored in the `countries` (name, region, population)
+- Aggregation done with a single SQL query
 
-```
-    environment:
-      - DATABASE_URL=postgresql+asyncpg://user:password@db:5432/countries
-      - DATA_SOURCE=statisticstimes
-```
-
-## Структура
-- Весь код у папці `src/`
-- Дані зберігаються у таблиці `countries` (name, region, population)
-- Агрегація робиться одним SQL-запитом
-
-## Додатково
-- Для зміни джерела даних змініть DATA_SOURCE у docker-compose.yml
-- Для асинхронної версії використовується SQLAlchemy 2.0 async, aiohttp, selectolax 
+## Additional info
+- To change the data source, modify DATA_SOURCE in docker-compose.yml
+- Async version uses SQLAlchemy 2.0 async, aiohttp, selectolax
