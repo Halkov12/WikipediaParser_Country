@@ -19,8 +19,9 @@ services:
     build:
       context: ./src
     command: ["python", "get_data.py"]
-    env_file:
-      .env
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://user:password@db:5432/countries
+      - DATA_SOURCE=wikipedia
     depends_on:
       db:
         condition: service_healthy
@@ -29,8 +30,9 @@ services:
     build:
       context: ./src
     command: ["python", "print_data.py"]
-    env_file:
-      .env
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://user:password@db:5432/countries
+      - DATA_SOURCE=wikipedia
     depends_on:
       db:
         condition: service_healthy
